@@ -3,6 +3,12 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
  */
+span.icon:before{
+    font-family: 'Glyphicons Halflings';
+    content:"\e225";
+}
+
+
 html {
   position: relative;
   min-height: 100%; }
