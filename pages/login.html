@@ -9,11 +9,14 @@
   <meta name="author" content="">
   <title>Andromia - Connexion</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/login.js" type="text/javascript"></script>
 </head>
 
 <body class="bg-dark">
@@ -24,13 +27,13 @@
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Adresse courriel</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Votre adresse courriel">
+            <input class="form-control" id="user" type="email" aria-describedby="emailHelp" placeholder="Votre adresse courriel">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Votre mot de passe">
+            <input class="form-control" id="pass" type="password" placeholder="Votre mot de passe">
           </div>
-          <a class="btn btn-primary btn-block" href="index.html">Connexion</a>
+          <a class="btn btn-primary btn-block" id="login" href="../index.html">Connexion</a>
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="register.html">Créer un compte</a>
@@ -39,10 +42,10 @@
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
