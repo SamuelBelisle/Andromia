@@ -12,7 +12,7 @@ function setListeUnits(){
 
     // Aller chercher les units sur le serveurs
     let myToken = sessionStorage.getItem("token");
-    
+
     $.ajax({
         url: SERVICE_URL,
         type: 'GET',
@@ -20,7 +20,7 @@ function setListeUnits(){
         dataType: 'json',
         complete: function(result, status){
             units = result.responseJSON.items;
-            
+
             // Construit le tableau
             buildTable();
 
@@ -47,34 +47,34 @@ function fillTable(units){
     for(let i = 0; i < units.length; i++){
         let unit = units[i];
         let span = Math.max(unit.weapons.length, unit.abilities.length);
-        
+
         //chaineUnits = "<tr><td rowspan='" + span + "'>" + unit.name + "</td>";
         chaineUnits = "<tr><td>TODO</td>";
-        
+
         // Ajoute les weapons
         chaineUnits += "<td>";
         for(let j = 0; j < unit.weapons.length; j++){
             chaineUnits += "<img src='../images/runes/weapons/" + unit.weapons[j] + ".png' style='height:40px'> " + unit.weapons[j] + "</br>";
         }
         chaineUnits += "</td>";
-        
-        
+
+
         // Ajoute les abilities
         chaineUnits += "<td>";
         for(let k = 0; k < unit.abilities.length; k++){
-            chaineUnits += "<img src='../images/runes/weapons/" + unit.abilities[k] + ".png'>   " + unit.abilities[k] + "</br>";
+            chaineUnits += "<img src='../images/runes/" + unit.abilities[k] + ".png'>   " + unit.abilities[k] + "</br>";
         }
-        chaineUnits += "</td>";        
-        
+        chaineUnits += "</td>";
+
         // ultimate
-        chaineUnits += "<td><img src='../images/runes/weapons/" + unit.ultimate + ".png'>   " + unit.ultimate + "</td>";
-        
+        chaineUnits += "<td>" + unit.ultimate + "</td>";
+
         // kernel
         chaineUnits += "<td>" + unit.kernel + "</td>";
-        
+
         // Détails
         chaineUnits += "<td><a href='./unit.html?uuid=" + unit.href.substring(41) + "'>Détails</a></td>";
-        
+
         $("#tabUnits tbody").append(chaineUnits);
     }
 };
