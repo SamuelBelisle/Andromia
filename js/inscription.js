@@ -1,45 +1,52 @@
 $(document).ready(function(){
-  /*$('#inscription').formValidation({
-    framework: 'bootstrap',
-    icon: {
-        valid: 'glyphicon glyphicon-ok',
-        invalid: 'glyphicon glyphicon-remove',
-        validating: 'glyphicon glyphicon-refresh'
-    },
-    fields: {
-        password1: {
-            validators: {
-                identical: {
-                    field: 'password2',
-                    message: 'The password and its confirm are not the same'
-                }
-            }
-        }
-    }
-});*/
     $('#login').click(function(){
-        var nom = document.getElementById("inscription").elements.namedItem("nom").value;
-        var courriel = document.getElementById("inscription").elements.namedItem("courriel").value;
-        var password = document.getElementById("inscription").elements.namedItem("password").value;
-        var confirmPassword = document.getElementById("inscription").elements.namedItem("confirmPassword").value;
+        let nom = document.getElementById("inscription").elements.namedItem("nom").value;
+        let courriel = document.getElementById("inscription").elements.namedItem("courriel").value;
+        let password = document.getElementById("inscription").elements.namedItem("password").value;
+        let confirmPassword = document.getElementById("inscription").elements.namedItem("confirmPassword").value;
 
-        if(password !== confirmPassword)
-          alert('La confirmation du mot de passe n\'est pas valide');
-          else {
+        // Vérifier que les champs ont bien été entré
+        if(nom == null)
+          displayError("Vous devez entrer votre nom", "alert-danger");
+        else if(courriel == null)
+          displayError("Vous devez entrer votre courriel", "alert-danger");
+        else if(password == null)
+          displayError("Vous devez entrer un mot de passe", "alert-danger");
+
+
+        // Vérifier que les mots de passes sont identique
+        if(password !== confirmPassword) {
+            displayError("Les mots de passes doivent être identique", "alert-danger");
+          } else {
+            // Tenter de créer l'explorateur
             $.ajax({
                 type: 'POST',
                 url: 'https://synthese-fredzx.c9users.io/inscription',
                 dataType: 'json',
                 headers: { "content-type": "application/json" },
-                data: { "nom": nom, "courriel": courriel, "password": password },
+                data: JSON.stringify({ "nom": nom, "courriel": courriel, "password": password }),
                 success: function(data){
-                    alert('well played');
+                    $(location).attr('href', './login.html');
                 },
+                // Gestion des erreurs
                 error: function(data){
-                  console.log(data);
-                  alert(data.statusText);
+                  switch(data.status) {
+                    case 409:
+                      displayError("Ce courriel est déjà utilisé", "alert-warning");
+                      break;
+                    default:
+                      displayError("Erreur de serveur (" + data.status + ")", "alert-danger");
+                    break;
+                  }
                 }
             });
           }
     });
+
+    // Afficher les erreurs
+    function displayError(error, niveau) {
+      let errorB = "<div class='alert " + niveau +" mx-auto mt-5 col-md-7'><p>";
+      let errorE = "</p></div>";
+      document.getElementById("erreur").innerHTML = errorB + error + errorE;
+    }
 });
