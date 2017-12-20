@@ -1,82 +1,76 @@
-$(document).ready(function(){
-    // Regarde si l'utilisateur est connecté
-    if(sessionStorage.getItem("token") === null){
-        // L'utilisateur n'est pas connecté, on affiche Connexion
-        setLogin();
-        setLocation(0);
-        setInox(0);
-        
-        setMessage();
-    }
-    else{
-        // L'utilisateur est connecté, on affiche Déconnexion
-        setLogout();
-        setLocation(1);
-        setInox(1);
-        
-        
-    }
+const SERVICE_URL = "https://synthese-fredzx.c9users.io/units/";
 
-     // Déconnexion
-    $("#logout").click(function(){
-        sessionStorage.clear();
-    })
+$(document).ready(function(){
+  var uuid = 'YjZlNWVmNGEtNDg4NC00MmFmLWFiNzktYmQ3ZDkxM2IzN2Vi';
+    // Regarde si l'utilisateur est connecté
+    if(sessionStorage.getItem("token") !== null){
+      $.ajax({
+          type: 'GET',
+          url: SERVICE_URL + uuid,
+          dataType: 'json',
+          headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
+          success: function(data){
+              printData(data);
+          },
+          // Gestion des erreurs
+          error: function(data){
+            switch(data.status) {
+              case 403:
+                displayError("Vous devez être connecté pour avoir accès à cette page", "alert-warning");
+                break;
+              default:
+                displayError("Erreur de serveur (" + data.status + ")", "alert-danger");
+              break;
+            }
+          }
+      });
+    }
 });
 
-// Met en forme la page pour l'utilisateur connecté
-function setLogout(){
-    let nom = JSON.parse(sessionStorage.getItem("explorateur"));
-    nom = nom.explorateur.nom;
+function setWeapons(data) {
+  let weapons = "<table class='table'>";
 
-    document.getElementById("wlcmessage").innerHTML="Bonjour Explorateur " + nom + " !";
-    document.getElementById("StatusLink").href="#";
-    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-out-alt"></i>Déconnexion';
-    $("#StatusLink").attr("data-toggle", 'modal');
-    $("#StatusLink").attr("data-target", '#logoutModal');
-};
+  for(let i = 0; i < data.length; i++) {
+    weapons += "<tr><th>";
+    weapons += data[i];
+    weapons += "</th><td><img src='../images/runes/weapons/" + data[i] + ".png'>";
+    weapons += "</img></td></tr>"
+  }
+  weapons += "</table>"
+  document.getElementById("weapons").innerHTML = weapons;
+}
 
-// Met en forme la page pour un utilisateur non connecté
-function setLogin(){
-    document.getElementById("wlcmessage").innerHTML="Bonjour Visiteur!";
-    document.getElementById("StatusLink").href="./login.html";
-    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-in-alt"></i>Connexion';
-};
+function setAbilities(data) {
+  let abilities = "<table class='table'>";
 
-// Affiche la location
-function setLocation(logged){
+  for(let i = 0; i < data.length; i++) {
+    abilities += "<tr><td><img src='../images/runes/" + data[i] + ".png'>";
+    abilities += "</img></td></tr>"
+  }
+  abilities += "</table>"
+  document.getElementById("abilities").innerHTML = abilities;
+}
 
-    // utilisateurnon connecté
-    if(logged == 0){
-        document.getElementById("userLocation").innerHTML= "Inconnue";
-    }
-    // utilisateur connecté
-    else{
-        let location = JSON.parse(sessionStorage.getItem("explorateur"));
-        location = location.explorateur.location;
-        document.getElementById("userLocation").innerHTML= location;
-    }
-};
+function setAffinity(data) {
+  document.getElementById("affinity").innerHTML = "<img src='../images/runes/" + data + ".png'>";
+}
 
-// Affiche le nombre d'inox
-function setInox(logged){
-    //utilisateur non connecté
-    if(logged == 0){
-        document.getElementById("totalInox").innerHTML= "Inconnu";    
-    }
-    // utilisateur connecté
-    else{   
-        let inox = JSON.parse(sessionStorage.getItem("explorateur"));
-        inox = inox.explorateur.inox;
-        document.getElementById("totalInox").innerHTML=inox;
-    }
-};
+function printData(data) {
+  document.getElementById("name").innerHTML = data.name;
+  document.getElementById("life").innerHTML = data.life;
+  document.getElementById("speed").innerHTML = data.speed;
+  document.getElementById("number").innerHTML = data.number;
+  document.getElementById("set").innerHTML = data.set;
+  document.getElementById("ultimate").innerHTML = data.ultimate;
+  setWeapons(data.weapons);
+  setAbilities(data.abilities);
+  setAffinity(data.affinity);
+  document.getElementById("image").src = data.imageUrl;
+}
 
-// Affiche un message d'erreur
-function setMessage(){
-    let erreur = "<div class='alert alert-warning mx-auto mt-5 col-md-6 text-center'><p>";
-    erreur += "Vous devez être connecté pour voir cette page";
-    erreur += "</p></div>";
-
-    //$("#ListeRunes").html(erreur);
-
-};
+// Afficher les erreurs
+function displayError(error, niveau) {
+  let errorB = "<div class='alert " + niveau +" mx-auto mt-5 col-md-7'><p>";
+  let errorE = "</p></div>";
+  document.getElementById("erreur").innerHTML = errorB + error + errorE;
+}
