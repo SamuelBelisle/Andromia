@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Andromia - Détails d'une Unit</title>
+  <title>Andromia - Détials d'une unit</title>
   <!-- Bootstrap core CSS-->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -15,31 +15,34 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/menu.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html"></a>
+    <a id="wlcmessage" class="navbar-brand" href="../index.html"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carte">
-          <a class="nav-link" href="../index.html">
+          <a class="nav-link" id="index" href="../index.html">
             <i class="fa fa-fw fa-globe"></i>
             <span class="nav-link-text">Carte</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units">
-          <a class="nav-link" href="listeUnits.html">
+          <a class="nav-link" id="units" href="./listeUnits.html">
             <i class="fa fa-fw fa-users"></i>
             <span class="nav-link-text">Mes Units</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Runes">
-          <a class="nav-link" href="runes.html">
+          <a class="nav-link" id="runes" href="./runes.html">
             <i class="fab fa-fw fa-gripfire"></i>
             <span class="nav-link-text">Mes Runes</span>
           </a>
@@ -53,20 +56,11 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-map-marker-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-gem"></i>
-          </a>
-        </li>
+      <ul class="navbar-nav ml-auto" id="menuHeader">
+
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-sign-out-alt"></i></a>
+          <a id="StatusLink" class="nav-link" href="./login.html">
+            <i class="fa fa-fw fa-sign-in-alt"></i></a>
         </li>
       </ul>
     </div>
@@ -76,14 +70,11 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          Mes Runes
+          Détails d'une unit
         </li>
       </ol>
       <div class="row">
-        <div class="col-12">
-          <h1>Blank</h1>
-          <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
-        </div>
+
       </div>
     </div>
     <!-- /.container-fluid-->
@@ -91,7 +82,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2017</small>
+          <small>Copyright © Andromia 2017</small>
         </div>
       </div>
     </footer>
