@@ -15,9 +15,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+  <link href="../css/image.css" rel="stylesheet" type="text/css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="../js/menu.js"></script>
+  <script type="text/javascript" src="../js/detailsUnit.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -73,8 +75,38 @@
           Détails d'une unit
         </li>
       </ol>
+      <div id="erreur"></div>
       <div class="row">
-
+        <table class="table">
+          <tr>
+            <th id="name" colspan=8>Nom</th>
+          </tr>
+          <tr>
+            <th colspan=2>Abilités</th>
+            <th colspan=2>Armes</th>
+            <th>Vie</th>
+            <th>Vitesse</th>
+            <th>Numéro</th>
+            <td rowspan=4 colspan=2><img id="image" alt="image"></img></td>
+          </tr>
+          <tr>
+            <td colspan=2 rowspan=99 id="abilities">abilities</td>
+            <td colspan=2 rowspan=99 id="weapons">weapons</td>
+            <td id="life">life</td>
+            <td id="speed">speed</td>
+            <td id="number">Number</td>
+          </tr>
+          <tr>
+            <th>Ultimate</th>
+            <th>Affinité</th>
+            <th>Set</th>
+          </tr>
+          <tr>
+            <td id="ultimate">Ultimate</td>
+            <td><img id="affinity"></img></td>
+            <td id="set">Set</td>
+          </tr>
+        </table>
       </div>
     </div>
     <!-- /.container-fluid-->
