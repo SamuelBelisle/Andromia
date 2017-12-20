@@ -15,12 +15,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../js/runes.js" type="text/javascript"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="../index.html">Bienvenue Visiteur !</a>
+    <a id="wlcmessage" class="navbar-brand" href="../index.html"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,16 +60,18 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-map-marker-alt"></i>
+            <span id="userLocation"></span>
           </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-gem"></i>
+            <span id="totalInox"></span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out-alt"></i>Déconnexion</a>
+          <a id="StatusLink" class="nav-link" href="./login.html">
+            <i class="fa fa-fw fa-sign-in-alt"></i></a>
         </li>
       </ul>
     </div>
@@ -80,9 +85,7 @@
         </li>
       </ol>
       <div class="row">
-        <div class="col-12">
-          <h1>Blank</h1>
-          <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
+        <div id="ListeRunes" class="col-6">
         </div>
       </div>
     </div>
@@ -100,11 +103,11 @@
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true"> 
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Prêt à quitter?</h5>
+            <h5 class="modal-title" id="logoutModalLabel">Prêt à quitter?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -112,7 +115,7 @@
           <div class="modal-body">Choisir "Déconnexion" ci-dessous pour terminer votre aventure.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-            <a class="btn btn-primary" href="login.html">Déconnexion</a>
+            <a id="logout" class="btn btn-primary" href="../pages/login.html">Déconnexion</a>
           </div>
         </div>
       </div>

@@ -1,12 +1,9 @@
 $(document).ready(function(){
     $('#login').click(function(){
-        var user = document.getElementById("user").value;
-        var pass = document.getElementById("pass").value;
+        let user = document.getElementById("user").value;
+        let pass = document.getElementById("pass").value;
         
-        var estValide = true;
-
-        console.log(user);
-        console.log(pass);        
+        let estValide = true;
 
         // Vérifier que les champs ont bien été entré
         if(user.length < 1){
