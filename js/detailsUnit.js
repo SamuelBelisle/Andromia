@@ -1,12 +1,17 @@
 const SERVICE_URL = "https://synthese-fredzx.c9users.io/units/";
 
 $(document).ready(function(){
-  var uuid = 'YjZlNWVmNGEtNDg4NC00MmFmLWFiNzktYmQ3ZDkxM2IzN2Vi';
+  //var uuid = 'YjZlNWVmNGEtNDg4NC00MmFmLWFiNzktYmQ3ZDkxM2IzN2Vi';
+
+  let temp = getUrlVars();
+  //.searchParams.get("uuid");
+  //if(temp.uuid === null);
+  //  displayError("Ce unit n'existe pas", "alert-warning");
     // Regarde si l'utilisateur est connecté
     if(sessionStorage.getItem("token") !== null){
       $.ajax({
           type: 'GET',
-          url: SERVICE_URL + uuid,
+          url: SERVICE_URL + temp.uuid,
           dataType: 'json',
           headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
           success: function(data){
@@ -27,6 +32,17 @@ $(document).ready(function(){
     }
 });
 
+// Stack overflow
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+// -------------------
+
 function setWeapons(data) {
   let weapons = "<table class='table'>";
 
@@ -44,7 +60,7 @@ function setAbilities(data) {
   let abilities = "<table class='table'>";
 
   for(let i = 0; i < data.length; i++) {
-    abilities += "<tr><td><img src='../images/runes/" + data[i] + ".png'>";
+    abilities += "<tr><td><img src='../images/runes/" + data[i] + ".png'> " + data[i];
     abilities += "</img></td></tr>"
   }
   abilities += "</table>"
@@ -70,7 +86,7 @@ function printData(data) {
 
 // Afficher les erreurs
 function displayError(error, niveau) {
-  let errorB = "<div class='alert " + niveau +" mx-auto mt-5 col-md-7'><p>";
+  let errorB = "<div class='alert " + niveau +" mx-auto col-md-12'><p>";
   let errorE = "</p></div>";
   document.getElementById("erreur").innerHTML = errorB + error + errorE;
 }
