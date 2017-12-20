@@ -54,7 +54,7 @@ function fillTable(units){
         // Ajoute les weapons
         chaineUnits += "<td>";
         for(let j = 0; j < unit.weapons.length; j++){
-            chaineUnits += unit.weapons[j] + "</br>";
+            chaineUnits += "<img src='../images/runes/weapons/" + unit.weapons[j] + ".png' style='height:40px'> " + unit.weapons[j] + "</br>";
         }
         chaineUnits += "</td>";
         
@@ -62,12 +62,12 @@ function fillTable(units){
         // Ajoute les abilities
         chaineUnits += "<td>";
         for(let k = 0; k < unit.abilities.length; k++){
-            chaineUnits += unit.abilities[k] + "</br>";
+            chaineUnits += "<img src='../images/runes/weapons/" + unit.abilities[k] + ".png'>   " + unit.abilities[k] + "</br>";
         }
         chaineUnits += "</td>";        
         
         // ultimate
-        chaineUnits += "<td>" + unit.ultimate + "</td>";
+        chaineUnits += "<td><img src='../images/runes/weapons/" + unit.ultimate + ".png'>   " + unit.ultimate + "</td>";
         
         // kernel
         chaineUnits += "<td>" + unit.kernel + "</td>";
