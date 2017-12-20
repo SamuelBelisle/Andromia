@@ -1,5 +1,6 @@
 $(document).ready(function(){
     // Regarde si l'utilisateur est connecté
+    console.log(sessionStorage.getItem("token"));
     if(sessionStorage.getItem("token") === null){
         // L'utilisateur n'est pas connecté, on affiche Connexion
         setLogin();
