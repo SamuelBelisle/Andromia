@@ -34,7 +34,7 @@ function fillTable(runes){
 
     for(let i = 0; i < runes.length; i++){
         let rune = runes[i];
-        var img;
+        let img;
 
         chaineRunes = "<tr><td>" + "<img src='../images/runes/" + rune.type + ".png' alt='" + rune.type + "'>   " + rune.type + "</td>";
         chaineRunes += "<td>" + rune.quantite + "</td>";
