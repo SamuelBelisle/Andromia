@@ -15,9 +15,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="../js/listeUnits.js"></script>
+  <script type="text/javascript" src="../js/menu.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -30,19 +31,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carte">
-          <a class="nav-link" href="../index.html">
+          <a class="nav-link" id="index" href="../index.html">
             <i class="fa fa-fw fa-globe"></i>
             <span class="nav-link-text">Carte</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units">
-          <a class="nav-link" href="./listeUnits.html">
+          <a class="nav-link" id="units" href="./listeUnits.html">
             <i class="fa fa-fw fa-users"></i>
             <span class="nav-link-text">Mes Units</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Runes">
-          <a class="nav-link" href="./runes.html">
+          <a class="nav-link" id="runes" href="./runes.html">
             <i class="fab fa-fw fa-gripfire"></i>
             <span class="nav-link-text">Mes Runes</span>
           </a>
@@ -56,19 +57,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-map-marker-alt"></i>
-            <span id="userLocation"></span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-gem"></i>
-            <span id="totalInox"></span>
-          </a>
-        </li>
+      <ul class="navbar-nav ml-auto" id="menuHeader">
         <li class="nav-item">
           <a id="StatusLink" class="nav-link" href="./login.html">
             <i id="connectStatus" class="fa fa-fw fa-sign-in-alt"></i></a>
