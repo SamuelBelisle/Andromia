@@ -48,7 +48,7 @@ function setLogout(){
 
     document.getElementById("wlcmessage").innerHTML="Bonjour Explorateur " + nom + " !";
     document.getElementById("StatusLink").href="#";
-    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-out-alt"></i>Déconnexion';
+    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-out-alt"></i>   Déconnexion';
     $("#StatusLink").attr("data-toggle", 'modal');
     $("#StatusLink").attr("data-target", '#logoutModal');
 };
@@ -56,13 +56,13 @@ function setLogout(){
 // Met en forme la page pour un utilisateur non connecté
 function setLogin(){
     document.getElementById("wlcmessage").innerHTML="Bonjour Visiteur!";
-    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-in-alt"></i>Connexion';
+    document.getElementById("StatusLink").innerHTML='<i id="ConnectStatus" class="fas fa-fw fa-sign-in-alt"></i>    Connexion';
 };
 
 // Affiche la location
 function setLocation(){
     var location = JSON.parse(sessionStorage.getItem("explorateur"));
-    location = location.explorateur.location;
+    location = " " + location.explorateur.location;
     if(location == "")
       document.getElementById("userLocation").innerHTML= "Indéfinie";
     else
@@ -72,7 +72,7 @@ function setLocation(){
 // Affiche le nombre d'inox
 function setInox(){
     var inox = JSON.parse(sessionStorage.getItem("explorateur"));
-    inox = inox.explorateur.inox;
+    inox = " " + inox.explorateur.inox;
     document.getElementById("totalInox").innerHTML=inox;
 };
 

@@ -47,9 +47,9 @@ function setWeapons(data) {
   let weapons = "<table class='table'>";
 
   for(let i = 0; i < data.length; i++) {
-    weapons += "<tr><th>";
+    weapons += "<tr><td>";
     weapons += data[i];
-    weapons += "</th><td><img src='../images/runes/weapons/" + data[i] + ".png'>";
+    weapons += "</td><td><img src='../images/runes/weapons/" + data[i] + ".png'>";
     weapons += "</img></td></tr>"
   }
   weapons += "</table>"

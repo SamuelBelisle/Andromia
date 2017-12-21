@@ -34,7 +34,7 @@ function setListeUnits(){
 function buildTable(){
     // Construction du tableau
     let table = "<table id='tabUnits' class='table table-bordered'>";
-    table += "<thead><tr><th>Nom</th><th>Armes</th><th>Aptitudes</th><th>Attaque Ultime</th><th>Kernel</th><th>Détails</th></thead>";
+    table += "<thead><tr><th>Nom</th><th>Armes</th><th>Aptitudes</th><th>Attaque Ultime</th><th>Détails</th></thead>";
     table += "<tbody></tbody></table>";
 
     $("#ListeUnits").html(table);
@@ -48,8 +48,8 @@ function fillTable(units){
         let unit = units[i];
         let span = Math.max(unit.weapons.length, unit.abilities.length);
 
-        //chaineUnits = "<tr><td rowspan='" + span + "'>" + unit.name + "</td>";
-        chaineUnits = "<tr><td>TODO</td>";
+        chaineUnits = "<tr><td>" + unit.name + "</td>";
+        //chaineUnits = "<tr><td>TODO</td>";
 
         // Ajoute les weapons
         chaineUnits += "<td>";
@@ -68,9 +68,6 @@ function fillTable(units){
 
         // ultimate
         chaineUnits += "<td>" + unit.ultimate + "</td>";
-
-        // kernel
-        chaineUnits += "<td>" + unit.kernel + "</td>";
 
         // Détails
         chaineUnits += "<td><a href='./unit.html?uuid=" + unit.href.substring(41) + "'>Détails</a></td>";
